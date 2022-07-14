@@ -38,17 +38,14 @@ const Options = () => {
   return (
     <Wrap>
       <LineOption>
-        <IoArrowRedoSharp size={24} color={SECONDARY}></IoArrowRedoSharp>
+        <IoArrowRedoSharp size={24} color={SECONDARY} />
         판매하기
       </LineOption>
       <LineOption>
-        <IoPerson size={24} color={SECONDARY}></IoPerson>내 상점
+        <IoPerson size={24} color={SECONDARY} />내 상점
       </LineOption>
       <Option>
-        <IoChatboxEllipsesSharp
-          size={24}
-          color={SECONDARY}
-        ></IoChatboxEllipsesSharp>
+        <IoChatboxEllipsesSharp size={24} color={SECONDARY} />
         장롱톡
       </Option>
     </Wrap>
