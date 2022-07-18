@@ -6,7 +6,7 @@ import {
   BLACK,
   LIGHT_GRAY,
   WHITE,
-} from '../../constants/color';
+} from '../../../constants/color';
 
 export const BUTTON_THEME = {
   PRIMARY: 'primary',

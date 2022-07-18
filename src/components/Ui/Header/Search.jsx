@@ -2,7 +2,7 @@ import React, { useCallback, useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Input from '../Input';
-import Button, { BUTTON_THEME } from '../Button';
+import Button, { BUTTON_THEME } from '../Button/Button';
 import Dropdown from './Dropdown';
 
 import { VscSearch } from 'react-icons/vsc';
