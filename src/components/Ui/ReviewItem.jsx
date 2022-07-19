@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ProfileImg from './ProfileImg';
 import OutLineButton from './Button/OutLineButton';
+import Rating from './Rating';
 
 const Container = styled.div`
   padding: 1rem;
@@ -70,7 +71,7 @@ const ReviewItem = ({
             <p>{userName}</p>
             <TransactionDate>{transactionDate}</TransactionDate>
           </RightTopInfo>
-          {/* TODO : Rating 컴포넌트 완성 시 추가 */}
+          <Rating type="view" score={rating} size={16} />
         </RightTop>
         <StyledOutLineButton>{productName}</StyledOutLineButton>
         <RightBottom>{review}</RightBottom>

@@ -22,7 +22,7 @@ const AppInner = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/profile" element={<Profile />} />
         {['/search/:query', 'category/:category'].map((path) => (
-          <Route path={path} element={<Search />} />
+          <Route key={path} path={path} element={<Search />} />
         ))}
       </Routes>
     </BrowserRouter>
