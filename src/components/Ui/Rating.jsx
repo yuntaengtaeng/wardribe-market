@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { AiFillStar } from 'react-icons/ai';
-import { PRIMARY, SECONDARY } from '../../constants/color';
+import { PRIMARY, LIGHT_GRAY } from '../../constants/color';
 
-const maxScore = 5;
+const MAX_SCORE = 5;
 
 const Wrap = styled.div`
   display: flex;
@@ -13,36 +13,33 @@ const Wrap = styled.div`
   height: fit-content;
 `;
 
-const Rating = ({ type, score, size, getScoreHandler, style }) => {
-  const [currentScore, setCurrentScore] = useState(score);
-  const star = [...Array(maxScore)].map((v, index) => (
-    <AiFillStar
-      key={index}
-      size={size}
-      color={index + 1 <= currentScore ? `${PRIMARY}` : `${SECONDARY}`}
-      style={{ margin: '0 0.2rem' }}
-      onClick={
-        type === 'score'
-          ? () => {
-              setCurrentScore(index + 1);
-            }
-          : null
-      }
-    ></AiFillStar>
-  ));
-
-  useEffect(() => {
-    getScoreHandler(currentScore);
-  }, [currentScore, getScoreHandler]);
-
-  return <Wrap style={style}>{star}</Wrap>;
+const Rating = ({ type, score, size, style, onScoreHandler }) => {
+  return (
+    <Wrap style={style}>
+      {[...Array(MAX_SCORE)].map((v, index) => (
+        <AiFillStar
+          key={index}
+          size={size}
+          color={index + 1 <= score ? `${PRIMARY}` : `${LIGHT_GRAY}`}
+          style={{ margin: '0 0.2rem' }}
+          onClick={
+            type === 'score'
+              ? () => {
+                  onScoreHandler(index + 1);
+                }
+              : null
+          }
+        ></AiFillStar>
+      ))}
+    </Wrap>
+  );
 };
 
 Rating.propTypes = {
   type: PropTypes.oneOf(['score', 'view']),
   score: PropTypes.number,
   size: PropTypes.number,
-  getScoreHandler: PropTypes.func,
+  onScoreHandler: PropTypes.func,
 };
 
 Rating.defaultProps = {
