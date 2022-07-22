@@ -17,6 +17,7 @@ const StyledShadowCard = styled(ShadowCardContainer)`
   background-color: ${WHITE};
   width: 100%;
   padding: 2rem;
+  box-sizing: border-box;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-Fill, minmax(8rem, 1fr));
