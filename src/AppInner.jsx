@@ -10,6 +10,7 @@ import Detail from './pages/Detail';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
+import Auth from './pages/Auth';
 
 import axios from 'axios';
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -27,6 +28,7 @@ const AppInner = () => {
         {['/search/:query', 'category/:category'].map((path) => (
           <Route key={path} path={path} element={<Search />} />
         ))}
+        <Route path="/auth/kakao/callback" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   );

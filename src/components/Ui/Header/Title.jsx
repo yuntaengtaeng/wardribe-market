@@ -8,6 +8,7 @@ import Icon from './Icon';
 const Container = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 0.6rem;
 `;
 
 const Text = styled.h2`

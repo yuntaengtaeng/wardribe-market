@@ -3,6 +3,7 @@ import React from 'react';
 import { Wrap } from '../Block';
 import styled from 'styled-components';
 
+import Top from './Top';
 import Title from './Title';
 import Search from './Search';
 import Options from './Options';
@@ -14,6 +15,7 @@ const CustomBlock = styled(Wrap)`
   flex-direction: column;
   align-items: initial;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
 `;
 
 const Bottom = styled.div`
@@ -27,6 +29,7 @@ const Header = () => {
 
   return (
     <CustomBlock>
+      <Top />
       <Title />
       <Bottom>
         <Search latestList={latestList} setLatestList={setLatestList} />
