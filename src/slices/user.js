@@ -13,7 +13,7 @@ const userSlice = createSlice({
     setUser(state, action) {
       state.nickname = action.payload.nickname;
       state.accessToken = action.payload.accessToken;
-      state.profileImgURL = action.payload.profileImgURL;
+      state.profileImage = action.payload.profileImage;
     },
     initUser() {
       return {

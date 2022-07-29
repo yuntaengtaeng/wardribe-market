@@ -31,9 +31,11 @@ const Logout = styled.span`
 `;
 
 const Top = () => {
-  const { nickName, accessToken, profileImgURL } = useSelector(
+  const { nickname, accessToken, profileImage } = useSelector(
     (state) => state.user
   );
+
+  console.log(profileImage);
 
   const isLoggiend = !!accessToken;
 
@@ -42,8 +44,8 @@ const Top = () => {
       {isLoggiend ? (
         <>
           <ProfileInfo>
-            <ProfileImg size={28} src={profileImgURL} />
-            <div>{nickName}</div>
+            <ProfileImg size={28} src={profileImage} />
+            <div>{nickname}</div>
           </ProfileInfo>
           <Logout>로그아웃</Logout>
         </>

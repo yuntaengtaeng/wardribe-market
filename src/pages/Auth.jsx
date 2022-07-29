@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { PRIMARY } from '../constants/color';
+import { useDispatch } from 'react-redux';
+import userSlice from '../slices/user';
+
 import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import styled from 'styled-components';
 
 import { REST_API_KEY, REDIRECT_URI } from '../constants/oAuth';
 import { objectToQueryString } from '../common';
+import { PRIMARY } from '../constants/color';
 
 import axios from 'axios';
 
@@ -23,11 +28,14 @@ const Guide = styled.h3`
 `;
 
 const Auth = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const code = searchParams.get('code');
 
   useEffect(() => {
     const requestKakaoLogin = async () => {
+      const code = searchParams.get('code');
+
       const obj = {
         grant_type: 'authorization_code',
         client_id: REST_API_KEY,
@@ -43,12 +51,21 @@ const Auth = () => {
           data: { access_token: accessToken },
         } = await axios.post('https://kauth.kakao.com/oauth/token', query);
 
-        //TODO : API 요청 후 서버에서 준 리스폰스 값을 redux에 user에 넣어야함
-      } catch (error) {
-        alert('카카오 로그인 실패 다시 시도해주세요.');
-      }
+        const {
+          data: { refreshToken, ...rest },
+        } = await axios.post(`/auth/kakao/login`, {
+          accessToken,
+        });
+
+        localStorage.setItem('refreshToken', refreshToken);
+        dispatch(userSlice.actions.setUser(rest));
+
+        navigate('/');
+      } catch (error) {}
     };
-  }, [code]);
+
+    requestKakaoLogin();
+  }, [dispatch, navigate, searchParams]);
 
   return (
     <Wrap>
